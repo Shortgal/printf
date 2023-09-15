@@ -12,21 +12,15 @@ void print_int(va_list args)
 }
 
 /**
- * print_int - prints an integer
+ * print_unsigned_int - prints an integer
  * @args: integer
  * Return: void
  */
 
 void print_unsigned_int(va_list args)
 {
-        print_number(va_arg(args, unsigned int));
+	print_number(va_arg(args, unsigned int));
 }
-
-/**
- * print_string - prints a string
- * @args: string
- * Return: void
- */
 
 /**
  * print_char - prints a char
@@ -38,6 +32,12 @@ void print_char(va_list args)
 {
 	_putchar(va_arg(args, int));
 }
+
+/**
+ * print_string - prints a string
+ * @args: string
+ * Return: void
+ */
 
 void print_string(va_list args)
 {
