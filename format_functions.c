@@ -6,9 +6,9 @@
  * Return: void
  */
 
-void print_int(va_list args)
+void print_int(va_list args, char *str)
 {
-	print_number(va_arg(args, int));
+	print_number(va_arg(args, int), str);
 }
 
 /**
@@ -17,9 +17,9 @@ void print_int(va_list args)
  * Return: void
  */
 
-void print_unsigned_int(va_list args)
+void print_unsigned_int(va_list args, char *str)
 {
-	print_number(va_arg(args, unsigned int));
+	print_number(va_arg(args, unsigned int), str);
 }
 
 /**
@@ -28,9 +28,11 @@ void print_unsigned_int(va_list args)
  * Return: void
  */
 
-void print_char(va_list args)
+void print_char(va_list args, char *str)
 {
-	_putchar(va_arg(args, int));
+	char c = va_arg(args, int);
+
+	str[_strlen(str)] = c;
 }
 
 /**
@@ -39,15 +41,9 @@ void print_char(va_list args)
  * Return: void
  */
 
-void print_string(va_list args)
+void print_string(va_list args, char *str)
 {
-	unsigned int x;
-	char *str = va_arg(args, char *);
+	char *ptr = va_arg(args, char *);
 
-	x = 0;
-	while (str[x])
-	{
-		_putchar(str[x]);
-		x++;
-	}
+	_strcat(str, ptr);
 }

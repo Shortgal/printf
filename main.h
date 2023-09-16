@@ -15,19 +15,21 @@
 typedef struct format_list
 {
 	int n;
-	void (*func)(va_list args);
+	void (*func)(va_list args, char *str);
 } format_list;
 
-int _putchar(char c);
-int _printf(const char *format, ...);
-char *_strcpy(char *dest, char *src);
+void rev_string(char *s);
 int _strlen(char *s);
-void print_number(int n);
-void (*get_format_func(int num))(va_list args);
+void print_number(int n, char *str);
+void _strcat(char *dest, char *src);
+void _memset(char *s, char b, unsigned int n);
 
-void print_int(va_list args);
-void print_unsigned_int(va_list args);
-void print_char(va_list args);
-void print_string(va_list args);
+int _printf(const char *format, ...);
+
+void (*get_format_func(int num))(va_list args, char *str);
+void print_int(va_list args, char *str);
+void print_unsigned_int(va_list args, char *str);
+void print_char(va_list args, char *str);
+void print_string(va_list args, char *str);
 
 #endif
