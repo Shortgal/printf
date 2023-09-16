@@ -21,6 +21,7 @@ typedef struct format_list
 void rev_string(char *s);
 int _strlen(char *s);
 void print_number(int n, char *str);
+void print_unsigned_number(unsigned int n, char *str);
 void _strcat(char *dest, char *src);
 void _memset(char *s, char b, unsigned int n);
 

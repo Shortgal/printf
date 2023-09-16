@@ -1,8 +1,9 @@
 #include "main.h"
 
 /**
- * print_int - prints an integer
+ * print_int - writes an integer to a string
  * @args: integer
+ * @str: pointer to the string
  * Return: void
  */
 
@@ -12,19 +13,21 @@ void print_int(va_list args, char *str)
 }
 
 /**
- * print_unsigned_int - prints an integer
+ * print_unsigned_int - writes an unsigned integer to a string
  * @args: integer
+ * @str: pointer to the string
  * Return: void
  */
 
 void print_unsigned_int(va_list args, char *str)
 {
-	print_number(va_arg(args, unsigned int), str);
+	print_unsigned_number(va_arg(args, unsigned int), str);
 }
 
 /**
- * print_char - prints a char
+ * print_char - appends a character to a string
  * @args: character
+ * @str: pointer to the string
  * Return: void
  */
 
@@ -36,8 +39,9 @@ void print_char(va_list args, char *str)
 }
 
 /**
- * print_string - prints a string
- * @args: string
+ * print_string - appends a string to another
+ * @args: source string
+ * @str: pointer to the destination string
  * Return: void
  */
 
