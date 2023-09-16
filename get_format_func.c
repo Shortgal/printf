@@ -1,4 +1,4 @@
-#include "printf.h"
+#include "main.h"
 
 /**
  * get_format_func - gets the appropriate function for the operation
