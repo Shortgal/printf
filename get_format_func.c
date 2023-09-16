@@ -13,6 +13,7 @@ void (*get_format_func(int num))(va_list args, char *str)
 				 {115, print_string},
 				 {100, print_int},
 				 {105, print_int},
+				 {117, print_unsigned_int},
 				 {0, NULL}};
 	unsigned int x = 0;
 
