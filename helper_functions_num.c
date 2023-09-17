@@ -60,3 +60,50 @@ void print_unsigned_number(unsigned int n, char *str)
 		str[_strlen(str)] = ((m / count) % 10) + 48;
 	}
 }
+
+/**
+ * convert_decimal - converts decimal to base x, appends it to string
+ * @args: integer
+ * @base: the base
+ * @str: pointer to the string
+ * Return: void
+ */
+
+void convert_decimal(unsigned int x, unsigned int base, char *str)
+{
+        /* base 2 => 2
+           base 8 => 8
+           base 16(upper) => 16
+           base 16(lower) => 17
+        */
+        char *ptr;
+        unsigned int y = 0, rem = 0, temp_x, temp_y,  max_sizeof_ptr = 0;
+
+	temp_x = x;
+	temp_y = base;
+	if (base == 17)
+		base = 16;
+	while (temp_x > 0)
+	{
+		max_sizeof_ptr++;
+		temp_x /= base;
+	}
+	ptr = malloc(sizeof(char) * max_sizeof_ptr);
+	if (ptr == NULL)
+		exit(1);
+	while (x > 0)
+        {
+                rem = (x % base);
+                if (rem >= 10)
+			ptr[y] = rem - 10 + 65;
+                else
+                        ptr[y] = rem + 48;
+		x /= base;
+		y++;
+	}
+        rev_string(ptr);
+	if (temp_y == 17)
+		string_to_lower(ptr);
+	_strcat(str, ptr);
+	free(ptr);
+}
