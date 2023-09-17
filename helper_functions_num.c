@@ -7,13 +7,15 @@
  * Return: no return.
  */
 
-void print_number(int n, char *str)
+int print_number(int n, char *str)
 {
+	int length = 0;
 	unsigned int m, d, count;
 
 	if (n < 0)
 	{
 		str[_strlen(str)] = 45;
+		length++;
 		m = n * -1;
 	}
 	else
@@ -31,7 +33,9 @@ void print_number(int n, char *str)
 	for (; count >= 1; count /= 10)
 	{
 		str[_strlen(str)] = ((m / count) % 10) + 48;
+		length++;
 	}
+	return (length);
 }
 
 /**
@@ -41,8 +45,9 @@ void print_number(int n, char *str)
  * Return: no return.
  */
 
-void print_unsigned_number(unsigned int n, char *str)
+int print_unsigned_number(unsigned int n, char *str)
 {
+	int length;
 	unsigned int m, d, count;
 
 	m = n;
@@ -58,7 +63,9 @@ void print_unsigned_number(unsigned int n, char *str)
 	for (; count >= 1; count /= 10)
 	{
 		str[_strlen(str)] = ((m / count) % 10) + 48;
+		length++;
 	}
+	return (length);
 }
 
 /**
@@ -69,7 +76,7 @@ void print_unsigned_number(unsigned int n, char *str)
  * Return: void
  */
 
-void convert_decimal(unsigned int x, unsigned int base, char *str)
+int convert_decimal(unsigned int x, unsigned int base, char *str)
 {
         /* base 2 => 2
            base 8 => 8
@@ -105,5 +112,7 @@ void convert_decimal(unsigned int x, unsigned int base, char *str)
 	if (temp_y == 17)
 		string_to_lower(ptr);
 	_strcat(str, ptr);
+	temp_y = _strlen(ptr);
 	free(ptr);
+	return(temp_y);
 }

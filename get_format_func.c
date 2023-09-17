@@ -6,7 +6,7 @@
  * Return: a pointer to the function or NULL if not found
  */
 
-void (*get_format_func(int num))(va_list args, char *str)
+int (*get_format_func(int num))(va_list args, char *str)
 {
 	/* create an array of formats and their corresponding functions */
 	format_list formats[] = {{98, print_binary},
