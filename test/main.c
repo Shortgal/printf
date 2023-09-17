@@ -10,11 +10,13 @@
 
 int main(void)
 {
-	int len, len2;
-
-	len = _printf("%c\n", NULL);
-	len2 = printf("%c\n", NULL);
-	_printf("len from null char:%d\n", len);
-	printf("len from null char:%d\n", len2);
+      	_printf("ml5 - %x\n", 5);
+	printf("pl5 - %x\n", 5);
+	_printf("ml451 - %x\n", 451);
+	printf("pl451 - %x\n", 451);
+	_printf("mc5 - %X\n", 5);
+	printf("pc5 - %X\n", 5);
+	_printf("mc451 - %X\n", 451);
+	printf("pc451 - %X\n", 451);
 	return (0);
 }

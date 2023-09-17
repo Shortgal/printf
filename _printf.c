@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-	str = malloc(sizeof(char) * 1024);
+	str = malloc(1024);
 	if (str == NULL)
 		exit(1);
 	_memset(str, 0, 1024);

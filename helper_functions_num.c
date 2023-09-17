@@ -95,19 +95,21 @@ int convert_decimal(unsigned int x, unsigned int base, char *str)
 		max_sizeof_ptr++;
 		temp_x /= base;
 	}
-	ptr = malloc(sizeof(char) * max_sizeof_ptr);
+	ptr = malloc(sizeof(char) * (max_sizeof_ptr + 1));
 	if (ptr == NULL)
 		exit(1);
+	_memset(ptr, 0, max_sizeof_ptr);
 	while (x > 0)
         {
-                rem = (x % base);
+		rem = x % base;
                 if (rem >= 10)
 			ptr[y] = rem - 10 + 65;
                 else
-                        ptr[y] = rem + 48;
+			ptr[y] = rem + 48;
 		x /= base;
 		y++;
 	}
+	ptr[y] = '\0';
         rev_string(ptr);
 	if (temp_y == 17)
 		string_to_lower(ptr);
