@@ -12,6 +12,10 @@ int _printf(const char *format, ...)
 	char *str;
 	va_list args;
 
+	if (format == NULL)
+	{
+		return (-1);
+	}
 	str = malloc(sizeof(char) * 1024);
 	if (str == NULL)
 		exit(1);
@@ -23,21 +27,24 @@ int _printf(const char *format, ...)
 		/* check if the character is % (in ASCII = 37) */
 		if (format[x] == 37)
 		{
-			/* increment x to point to format specifier */
-			x++;
-			/* check if character is % */
-			if (format[x] == 37)
-				str[_strlen(str)] = format[x];
+			/* check if the next character is % */
+			if (format[x + 1] == 37)
+				str[_strlen(str)] = format[x + 1];
 			else
 			{
 				/* to the get format function */
 				/* pass the next character i.e x+1 */
-				(*get_format_func(format[x]))(args, str);
+				if ((*get_format_func(format[x + 1])) == NULL)
+					return (-1);
+				else
+					(*get_format_func(format[x + 1]))(args, str);
 			}
+			/* increment x to point to format specifier */
+			x++;
 		}
 		else
 		{
-			/* it's a regular character, print it with */
+			/* it's a regular character, add it to buffer */
 			/* get the last index of the string and append it */
 			str[_strlen(str)] = format[x];
 		}
