@@ -30,6 +30,7 @@ int _printf(const char *format, ...)
 			{
 				str[_strlen(str)] = format[x + 1];
 				length++;
+				x++;
 			}
 			else if (format[x + 1] == '\0' || format[x + 1] == 32)
 				return (-1);
@@ -43,10 +44,12 @@ int _printf(const char *format, ...)
 					length++;
 				}
 				else
+				{
 					length += (*get_format_func(format[x + 1]))(args, str);
+					/* increment x to point to format specifier */
+					x++;
+				}
 			}
-			/* increment x to point to format specifier */
-			x++;
 		}
 		else
 		{

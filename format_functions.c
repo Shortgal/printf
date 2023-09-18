@@ -9,7 +9,7 @@
 
 int print_int(va_list args, char *str)
 {
-	return(print_number(va_arg(args, int), str));
+	return (print_number(va_arg(args, int), str));
 }
 
 /**
@@ -21,7 +21,7 @@ int print_int(va_list args, char *str)
 
 int print_unsigned_int(va_list args, char *str)
 {
-	return(print_unsigned_number(va_arg(args, unsigned int), str));
+	return (print_unsigned_number(va_arg(args, unsigned int), str));
 }
 
 /**
@@ -58,6 +58,6 @@ int print_string(va_list args, char *str)
 	else
 	{
 		_strcat(str, ptr);
-		return(_strlen(ptr));
+		return (_strlen(ptr));
 	}
 }
