@@ -8,15 +8,13 @@
 
 int _printf(const char *format, ...)
 {
-	int x = 0;
+	int x = 0, length = 0;
 	char *str;
 	va_list args;
 
 	if (format == NULL)
-	{
 		return (-1);
-	}
-	str = malloc(sizeof(char) * 1024);
+	str = malloc(1024);
 	if (str == NULL)
 		exit(1);
 	_memset(str, 0, 1024);
@@ -29,30 +27,41 @@ int _printf(const char *format, ...)
 		{
 			/* check if the next character is % */
 			if (format[x + 1] == 37)
+			{
 				str[_strlen(str)] = format[x + 1];
+				length++;
+				x++;
+			}
+			else if (format[x + 1] == '\0' || format[x + 1] == 32)
+				return (-1);
 			else
 			{
 				/* to the get format function */
 				/* pass the next character i.e x+1 */
 				if ((*get_format_func(format[x + 1])) == NULL)
-					return (-1);
+				{
+					str[_strlen(str)] = format[x];
+					length++;
+				}
 				else
-					(*get_format_func(format[x + 1]))(args, str);
+				{
+					length += (*get_format_func(format[x + 1]))(args, str);
+					/* increment x to point to format specifier */
+					x++;
+				}
 			}
-			/* increment x to point to format specifier */
-			x++;
 		}
 		else
 		{
 			/* it's a regular character, add it to buffer */
 			/* get the last index of the string and append it */
 			str[_strlen(str)] = format[x];
+			length++;
 		}
 		x++;
 	}
-	x = _strlen(str);
 	va_end(args);
 	write(1, str, _strlen(str));
 	free(str);
-	return (x);
+	return (length);
 }

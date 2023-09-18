@@ -7,9 +7,9 @@
  * Return: void
  */
 
-void print_int(va_list args, char *str)
+int print_int(va_list args, char *str)
 {
-	print_number(va_arg(args, int), str);
+	return (print_number(va_arg(args, int), str));
 }
 
 /**
@@ -19,9 +19,9 @@ void print_int(va_list args, char *str)
  * Return: void
  */
 
-void print_unsigned_int(va_list args, char *str)
+int print_unsigned_int(va_list args, char *str)
 {
-	print_unsigned_number(va_arg(args, unsigned int), str);
+	return (print_unsigned_number(va_arg(args, unsigned int), str));
 }
 
 /**
@@ -31,11 +31,12 @@ void print_unsigned_int(va_list args, char *str)
  * Return: void
  */
 
-void print_char(va_list args, char *str)
+int print_char(va_list args, char *str)
 {
 	char c = va_arg(args, int);
 
 	str[_strlen(str)] = c;
+	return (1);
 }
 
 /**
@@ -45,9 +46,18 @@ void print_char(va_list args, char *str)
  * Return: void
  */
 
-void print_string(va_list args, char *str)
+int print_string(va_list args, char *str)
 {
 	char *ptr = va_arg(args, char *);
 
-	_strcat(str, ptr);
+	if (ptr == NULL)
+	{
+		_strcat(str, "(null)");
+		return (_strlen("(null)"));
+	}
+	else
+	{
+		_strcat(str, ptr);
+		return (_strlen(ptr));
+	}
 }
