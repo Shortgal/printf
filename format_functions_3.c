@@ -108,7 +108,7 @@ int print_s(va_list args, char *str)
 				y = ptr[x];
 				_strcat(ptr2, "\\x");
 				z += _strlen("\\x");
-				z += convert_decimal(y, 18, ptr2);
+				z += dec_hex_format(y, ptr2);
 			}
 			else
 			{
