@@ -1,29 +1,37 @@
 #include "main.h"
 
 /**
- * _printf - produces output according to a format
- * @format: string format
- * Return: 0
+ * alloc_mem - allocates memory to a pointer and sets its bytes to zero
+ * Return: pointer to memory
  */
 
-int _printf(const char *format, ...)
+char *alloc_mem(void)
+{
+	char *ptr;
+
+	ptr = malloc(sizeof(char) * 1024);
+	if (ptr == NULL)
+		exit(1);
+	_memset(ptr, 0, 1024);
+	ptr[0] = '\0';
+	return (ptr);
+}
+
+/**
+ * _fprintf - iterates through a format and creates the corresponding string
+ * @format: string format
+ * @args: array of arguments
+ * @str: output buffer
+ * Return: length of string
+ */
+
+int _fprintf(const char *format, va_list args, char *str)
 {
 	int x = 0, length = 0;
-	char *str;
-	va_list args;
 
-	if (format == NULL)
-		return (-1);
-	str = malloc(1024);
-	if (str == NULL)
-		exit(1);
-	_memset(str, 0, 1024);
-	str[0] = '\0';
-	va_start(args, format);
 	while (format[x])
 	{
-		/* check if the character is % (in ASCII = 37) */
-		if (format[x] == 37)
+		if (format[x] == 37)/* check if the character is % (37) */
 		{
 			/* check if the next character is % */
 			if (format[x + 1] == 37)
@@ -32,9 +40,7 @@ int _printf(const char *format, ...)
 				length++;
 				x++;
 			}
-			else if (format[x + 1] == '\0' || format[x + 1] == 32)
-				return (-1);
-			else
+			else if (!(format[x + 1] == 0 || format[x + 1] == 32))
 			{
 				/* to the get format function */
 				/* pass the next character i.e x+1 */
@@ -50,17 +56,36 @@ int _printf(const char *format, ...)
 					x++;
 				}
 			}
+			else
+				return (-1);
 		}
-		else
+		else/* it's a regular character, add it to buffer */
 		{
-			/* it's a regular character, add it to buffer */
-			/* get the last index of the string and append it */
 			str[_strlen(str)] = format[x];
 			length++;
 		}
 		x++;
 	}
-	va_end(args);
+	return (length);
+}
+
+
+/**
+ * _printf - produces output according to a format
+ * @format: string format
+ * Return: length of string
+ */
+
+int _printf(const char *format, ...)
+{
+	int length = 0;
+	char *str = alloc_mem();
+	va_list args;
+
+	if (format == NULL)
+		return (-1);
+	va_start(args, format);
+	length += _fprintf(format, args, str);
 	write(1, str, _strlen(str));
 	free(str);
 	return (length);
