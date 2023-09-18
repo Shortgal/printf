@@ -19,6 +19,14 @@
 /* SIZES */
 #define S_LONG 2
 #define S_SHORT 1
+
+/******************* FUNCTIONS ******************/
+
+/* Function to handle other other specifiers */
+int get_flags(const char *format, int *i);
+int get_precicision(const char *format, int *i, va_list list);
+int get_size(const char *format, int size);
+
 /**
  * format_list - contains the format specifier and its associated function
  * @n: format specifier
