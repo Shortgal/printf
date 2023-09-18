@@ -10,7 +10,7 @@
 
 int main(void)
 {
-	printf("%c");
-	_printf("%c");
+	printf(" %c\n", -84);
+	_printf(" %c\n", -84);
 	return (0);
 }

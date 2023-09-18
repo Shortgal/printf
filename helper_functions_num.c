@@ -81,6 +81,11 @@ int convert_decimal(unsigned int x, unsigned int base, char *str)
 	char *ptr;
 	unsigned int y = 0, rem = 0, temp_x, temp_y,  max_sizeof_ptr = 0;
 
+	if (x == 0)
+	{
+		str[_strlen(str)] = 48;
+		return (1);
+	}
 	temp_x = x;
 	temp_y = base;
 	if (base == 17 || base == 18)
