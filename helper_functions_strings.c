@@ -91,3 +91,22 @@ void _memset(char *s, char b, unsigned int n)
 	for (; x < n; x++)
 		s[x] = b;
 }
+
+/**
+ * string_to_lower - changes all uppercase to lowercase
+ * @s: pointer to string
+ * Return: pointer to string
+ */
+
+void string_to_lower(char *s)
+{
+	int x;
+
+	for (x = 0; ; x++)
+	{
+		if (s[x] && s[x] > 64 && s[x] < 91)
+			s[x] = s[x] + 32;
+		else if (!s[x])
+			break;
+	}
+}
