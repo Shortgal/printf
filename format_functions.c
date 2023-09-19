@@ -50,6 +50,14 @@ int print_string(va_list args, char *str)
 {
 	char *ptr = va_arg(args, char *);
 
-	_strcat(str, ptr);
-	return (_strlen(ptr));
+	if (ptr == NULL)
+	{
+		_strcat(str, "(null)");
+		return (6);
+	}
+	else
+	{
+		_strcat(str, ptr);
+		return (_strlen(ptr));
+	}
 }
