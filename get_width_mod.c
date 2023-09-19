@@ -16,7 +16,7 @@ int get_width(const char *format, int *index, va_list args)
 	{
 		(*index)++;
 		if (*format == 42)
-			value == va_arg(args, int);
+			value = va_arg(args, int);
 		if (value <= 0)
 			return (0);
 		return (value);

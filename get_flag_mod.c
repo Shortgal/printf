@@ -7,33 +7,34 @@
  * Return: flag's value or 0
  */
 
-int get_flags(const char *format, int *index)
+unsigned char get_flags(const char *format, int *index)
 {
-	int x, y;
+	int x = 0, y;
 	unsigned char c;
 	flags_list flags[] = {{42, F_PLUS},
 			      {32, F_SPACE},
-			      {35, F_SHARP},
+			      {35, F_HASH},
 			      {48, F_ZERO},
 			      {45, F_MINUS},
 			      {0, 0}};
 
-	while (*format)
+	while (format[x])
 	{
-		for (x = 0; flags[x]; x++)
+		for (y = 0; flags[y].flag != 0; y++)
 		{
-			if (flags[x].flag == *format)
+			if (flags[y].flag == format[x])
 			{
 				(*index)++;
 				if (c == 0)
-					c = flags[x].value;
+					c = flags[y].value;
 				else
-					c |= flags[x].value;
+					c |= flags[y].value;
 				break;
 			}
 		}
-		if (flags[x].value == 0)
+		if (flags[y].value == 0)
 			break;
+		x++;
 	}
 	return (c);
 }

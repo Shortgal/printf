@@ -22,11 +22,6 @@
 
 /******************* FUNCTIONS ******************/
 
-/* Function to handle other other specifiers */
-int get_flags(const char *format, int *i);
-int get_precicision(const char *format, int *i, va_list list);
-int get_size(const char *format, int size);
-
 /**
  * format_list - contains the format specifier and its associated function
  * @n: format specifier
@@ -92,7 +87,7 @@ int print_address(va_list args, char *str);
 int dec_hex_address(long unsigned int x, char *str);
 
 /* get modifiers functions */
-int get_flags(const char *format, int *index);
+unsigned char get_flags(const char *format, int *index);
 int get_length(const char *format, int *index);
 int get_width(const char *format, int *index, va_list args);
 int get_precision(const char *format, int *index, va_list args);
