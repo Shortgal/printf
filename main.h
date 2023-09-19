@@ -59,6 +59,7 @@ void rot13(char *s);
 
 /* main function */
 int _printf(const char *format, ...);
+int _fprintf(const char *format, va_list args, char *str);
 
 /* format specifiers */
 int (*get_format_func(int num))(va_list args, char *str);
