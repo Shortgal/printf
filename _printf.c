@@ -28,13 +28,11 @@ char *alloc_mem(void)
 int _fprintf(const char *format, va_list args, char *str)
 {
 	int x = 0, length = 0;
-	
 
 	while (format[x])
 	{
-		if (format[x] == 37)/* check if the character is % (37) */
+		if (format[x] == 37)
 		{
-			/* check if the next character is % */
 			if (format[x + 1] == 37)
 			{
 				str[_strlen(str)] = format[x + 1];
@@ -43,8 +41,6 @@ int _fprintf(const char *format, va_list args, char *str)
 			}
 			else if (!(format[x + 1] == 0 || format[x + 1] == 32))
 			{
-				/* to the get format function */
-				/* pass the next character i.e x+1 */
 				if ((*get_format_func(format[x + 1])) == NULL)
 				{
 					str[_strlen(str)] = format[x];
@@ -53,21 +49,19 @@ int _fprintf(const char *format, va_list args, char *str)
 				else
 				{
 					length += (*get_format_func(format[x + 1]))(args, str);
-					/* increment x to point to format specifier */
 					x++;
 				}
 			}
 			else
 				return (-1);
 		}
-		else/* it's a regular character, add it to buffer */
+		else
 		{
 			str[_strlen(str)] = format[x];
 			length++;
 		}
 		x++;
 	}
-
 	return (length);
 }
 
@@ -83,6 +77,7 @@ int _printf(const char *format, ...)
 	int length = 0;
 	va_list args;
 	char *str = alloc_mem();
+
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);

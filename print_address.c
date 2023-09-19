@@ -11,12 +11,12 @@ int print_address(va_list args, char *str)
 {
 	int len;
 	char *ptr = alloc_mem();
-	long unsigned int x = va_arg(args, long unsigned int);
+	unsigned long int x = va_arg(args, unsigned long int);
 
 	if (x == 0)
 	{
 		_strcat(str, "(nil)");
-		return(_strlen("(nil)"));
+		return (_strlen("(nil)"));
 	}
 	ptr[0] = '0';
 	ptr[1] = 'x';
@@ -30,16 +30,16 @@ int print_address(va_list args, char *str)
 
 
 /**
- * dec_hex_address - converts long unsigned int to base 16, appends it to string
+ * dec_hex_address - converts long unsigned int to hex, appends it to string
  * @x: integer
  * @str: pointer to the string
  * Return: length of appended string
  */
 
-int dec_hex_address(long unsigned int x, char *str)
+int dec_hex_address(unsigned long int x, char *str)
 {
 	char *ptr;
-	long unsigned int y = 0, rem = 0, temp_x, max_sizeof_ptr = 0;
+	unsigned long int y = 0, rem = 0, temp_x, max_sizeof_ptr = 0;
 
 	if (x == 0)
 	{

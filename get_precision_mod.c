@@ -5,7 +5,7 @@
  * @format: string format
  * @index: position in string format
  * @args: list of arguments
- * Return: value of precision modifier if present, 0 if empty, 0 or -ve, else -1
+ * Return: value if present, 0 if empty, 0 or -ve, else -1
  */
 
 int get_precision(const char *format, int *index, va_list args)
