@@ -82,7 +82,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	va_start(args, format);
 	length += _fprintf(format, args, str);
-	write (1, str, _strlen(str));
+	write(1, str, _strlen(str));
 	free(str);
 	return (length);
 }
