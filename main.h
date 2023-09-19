@@ -46,7 +46,6 @@ int print_number(int n, char *str);
 int print_unsigned_number(unsigned int n, char *str);
 void _strcat(char *dest, char *src);
 void _memset(char *s, char b, unsigned int n);
-int convert_decimal(unsigned int x, unsigned int base, char *str);
 void rot13(char *s);
 
 int _printf(const char *format, ...);
@@ -65,5 +64,11 @@ int print_hex(va_list args, char *str);
 int print_s(va_list args, char *str);
 int print_rot(va_list args, char *str);
 int print_rev(va_list args, char *str);
+
+int dec_binary(unsigned int x, char *str);
+int dec_octal(unsigned int x, char *str);
+int dec_hex_lower(unsigned int x, char *str);
+int dec_hex_upper(unsigned int x, char *str);
+int dec_hex_format(unsigned int x, char *str);
 
 #endif

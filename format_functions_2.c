@@ -11,7 +11,7 @@ int print_binary(va_list args, char *str)
 {
 	unsigned int x = va_arg(args, unsigned int);
 
-	return (convert_decimal(x, 2, str));
+	return (dec_binary(x, str));
 }
 
 /**
@@ -25,7 +25,7 @@ int print_octal(va_list args, char *str)
 {
 	unsigned int x = va_arg(args, unsigned int);
 
-	return (convert_decimal(x, 8, str));
+	return (dec_octal(x, str));
 }
 
 /**
@@ -39,7 +39,7 @@ int print_hex_lower(va_list args, char *str)
 {
 	unsigned int x = va_arg(args, unsigned int);
 
-	return (convert_decimal(x, 17, str));
+	return (dec_hex_lower(x, str));
 }
 
 /**
@@ -53,5 +53,5 @@ int print_hex(va_list args, char *str)
 {
 	unsigned int x = va_arg(args, unsigned int);
 
-	return (convert_decimal(x, 16, str));
+	return (dec_hex_upper(x, str));
 }

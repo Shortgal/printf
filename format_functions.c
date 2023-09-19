@@ -33,7 +33,7 @@ int print_unsigned_int(va_list args, char *str)
 
 int print_char(va_list args, char *str)
 {
-	char c = va_arg(args, int);
+	unsigned char c = va_arg(args, int);
 
 	str[_strlen(str)] = c;
 	return (1);
@@ -50,14 +50,6 @@ int print_string(va_list args, char *str)
 {
 	char *ptr = va_arg(args, char *);
 
-	if (ptr == NULL)
-	{
-		_strcat(str, "(null)");
-		return (_strlen("(null)"));
-	}
-	else
-	{
-		_strcat(str, ptr);
-		return (_strlen(ptr));
-	}
+	_strcat(str, ptr);
+	return (_strlen(ptr));
 }
