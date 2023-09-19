@@ -18,4 +18,22 @@ int get_flags(const char *format, int *index)
 			      {45, F_MINUS},
 			      {0, 0}};
 
-	
+	while (*format)
+	{
+		for (x = 0; flags[x]; x++)
+		{
+			if (flags[x].flag == *format)
+			{
+				(*index)++;
+				if (c == 0)
+					c = flags[x].value;
+				else
+					c |= flags[x].value;
+				break;
+			}
+		}
+		if (flags[x].value == 0)
+			break;
+	}
+	return (c);
+}

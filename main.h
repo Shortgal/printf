@@ -18,6 +18,20 @@ typedef struct format_list
 	int (*func)(va_list args, char *str);
 } format_list;
 
+/**
+ * flags_list - contains the format specifier and its associated function
+ * @flag: format specifier
+ * @value: associated function
+ */
+
+typedef struct flags_list
+{
+	int flag;
+	int value;
+} flags_list;
+
+/* helper functions */
+char *alloc_mem(void);
 void string_to_lower(char *s);
 void rev_string(char *s);
 int _strlen(char *s);
@@ -27,9 +41,12 @@ void _strcat(char *dest, char *src);
 void _memset(char *s, char b, unsigned int n);
 void rot13(char *s);
 
+/* main function */
 int _printf(const char *format, ...);
 
+/* format specifiers */
 int (*get_format_func(int num))(va_list args, char *str);
+
 int print_int(va_list args, char *str);
 int print_unsigned_int(va_list args, char *str);
 int print_char(va_list args, char *str);
@@ -53,6 +70,10 @@ int dec_hex_format(unsigned int x, char *str);
 int print_address(va_list args, char *str);
 int dec_hex_address(long unsigned int x, char *str);
 
-char *alloc_mem(void);
+/* get modifiers functions */
+int get_flags(const char *format, int *index);
+int get_length(const char *format, int *index);
+int get_width(const char *format, int *index, va_list args);
+int get_precision(const char *format, int *index, va_list args);
 
 #endif
