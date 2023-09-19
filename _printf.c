@@ -21,13 +21,13 @@ char *alloc_mem(void)
  * _fprintf - iterates through a format and creates the corresponding string
  * @format: string format
  * @args: array of arguments
- * @str: output buffer
  * Return: length of string
  */
 
-int _fprintf(const char *format, va_list args, char *str)
+int _fprintf(const char *format, va_list args)
 {
 	int x = 0, length = 0;
+	char *str = alloc_mem();
 
 	while (format[x])
 	{
@@ -66,6 +66,8 @@ int _fprintf(const char *format, va_list args, char *str)
 		}
 		x++;
 	}
+	write(1, str, _strlen(str));
+	free(str);
 	return (length);
 }
 
@@ -79,14 +81,11 @@ int _fprintf(const char *format, va_list args, char *str)
 int _printf(const char *format, ...)
 {
 	int length = 0;
-	char *str = alloc_mem();
 	va_list args;
 
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
-	length += _fprintf(format, args, str);
-	write(1, str, _strlen(str));
-	free(str);
+	length += _fprintf(format, args);
 	return (length);
 }
