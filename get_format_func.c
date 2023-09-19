@@ -21,6 +21,7 @@ int (*get_format_func(int num))(va_list args, char *str)
 				 {83, print_s},
 				 {82, print_rot},
 				 {114, print_rev},
+				 {112, print_address},
 				 {0, NULL}};
 	unsigned int x = 0;
 

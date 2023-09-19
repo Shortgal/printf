@@ -10,16 +10,8 @@
 
 int main(void)
 {
-	unsigned int ui = (unsigned int)INT_MAX + 1024;
-
-	printf(" %b\n", ui);
-	_printf(" %b\n", ui);
-	printf(" %o\n", ui);
-	_printf(" %o\n", ui);
-	printf(" %x\n", ui);
-	_printf(" %x\n", ui);
-	printf(" %X\n", ui);
-	_printf(" %X\n", ui);
+	_printf("%s\n", NULL);
+	printf("%s\n", NULL);
 
 	return (0);
 }

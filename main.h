@@ -50,4 +50,9 @@ int dec_hex_lower(unsigned int x, char *str);
 int dec_hex_upper(unsigned int x, char *str);
 int dec_hex_format(unsigned int x, char *str);
 
+int print_address(va_list args, char *str);
+int dec_hex_address(long unsigned int x, char *str);
+
+char *alloc_mem(void);
+
 #endif
