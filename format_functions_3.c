@@ -4,15 +4,17 @@
  * print_rev - reverses a string and appends its to an output buffer
  * @args: string to be reversed
  * @str: pointer to buffer
+ * @len: length modifier
  * Return: length of reversed string
  */
 
-int print_rev(va_list args, char *str)
+int print_rev(va_list args, char *str, int len)
 {
 	char *ptr;
 	char *ptr2 = va_arg(args, char *);
 	int x = 0;
 
+	(void)len;
 	ptr = malloc(sizeof(char) * 1024);
 	if (ptr == NULL)
 		exit(1);
@@ -42,15 +44,17 @@ int print_rev(va_list args, char *str)
  * print_rot - encodes a string using ROT13 and appends it an output buffer
  * @args: string to be encoded
  * @str: output buffer
+ * @len: length modifier
  * Return: length of encoded string
  */
 
-int print_rot(va_list args, char *str)
+int print_rot(va_list args, char *str, int len)
 {
 	char *ptr;
 	char *ptr2 = va_arg(args, char *);
 	int x = 0;
 
+	(void)len;
 	ptr = malloc(sizeof(char) * 1024);
 	if (ptr == NULL)
 		exit(1);
@@ -81,15 +85,17 @@ int print_rot(va_list args, char *str)
  * print_s - custom string printing
  * @args: string to be printed
  * @str: output buffer
+ * @len: length modifier
  * Return: length of printed string
  */
 
-int print_s(va_list args, char *str)
+int print_s(va_list args, char *str, int len)
 {
 	char *ptr = va_arg(args, char *);
 	char *ptr2;
 	unsigned int x = 0, y = 0, z = 0;
 
+	(void)len;
 	ptr2 = malloc(sizeof(char) * 1024);
 	if (ptr2 == NULL)
 		exit(1);

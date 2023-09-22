@@ -7,7 +7,7 @@
  * Return: 0, short, long
  */
 
-int get_length(const char *format, int *index)
+int get_length(const char *format, unsigned char *index)
 {
 	if (*format == 'h')
 	{

@@ -4,15 +4,17 @@
  * print_address - prints the memory address of a variable to a buffer
  * @args: variable
  * @str: output buffer
+ * @len: length modifier
  * Return: length of appended string
  */
 
-int print_address(va_list args, char *str)
+int print_address(va_list args, char *str, int len)
 {
-	int len;
+	int length;
 	char *ptr = alloc_mem();
 	unsigned long int x = va_arg(args, unsigned long int);
 
+	(void)len;
 	if (x == 0)
 	{
 		_strcat(str, "(nil)");
@@ -23,9 +25,9 @@ int print_address(va_list args, char *str)
 	ptr[2] = '\0';
 	dec_hex_address(x, ptr);
 	_strcat(str, ptr);
-	len = _strlen(ptr);
+	length = _strlen(ptr);
 	free(ptr);
-	return (len);
+	return (length);
 }
 
 

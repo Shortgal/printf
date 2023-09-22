@@ -31,7 +31,7 @@
 typedef struct format_list
 {
 	int n;
-	int (*func)(va_list args, char *str);
+	int (*func)(va_list args, char *str, int len);
 } format_list;
 
 /**
@@ -51,8 +51,8 @@ char *alloc_mem(void);
 void string_to_lower(char *s);
 void rev_string(char *s);
 int _strlen(char *s);
-int print_number(int n, char *str);
-int print_unsigned_number(unsigned int n, char *str);
+int print_number(long int n, char *str);
+int print_unsigned_number(unsigned long int n, char *str);
 void _strcat(char *dest, char *src);
 void _memset(char *s, char b, unsigned int n);
 void rot13(char *s);
@@ -62,21 +62,21 @@ int _printf(const char *format, ...);
 int _fprintf(const char *format, va_list args, char *str);
 
 /* format specifiers */
-int (*get_format_func(int num))(va_list args, char *str);
+int (*get_format_func(int num))(va_list args, char *str, int len);
 
-int print_int(va_list args, char *str);
-int print_unsigned_int(va_list args, char *str);
-int print_char(va_list args, char *str);
-int print_string(va_list args, char *str);
+int print_int(va_list args, char *str, int len);
+int print_unsigned_int(va_list args, char *str, int len);
+int print_char(va_list args, char *str, int len);
+int print_string(va_list args, char *str, int len);
 
-int print_binary(va_list args, char *str);
-int print_octal(va_list args, char *str);
-int print_hex_lower(va_list args, char *str);
-int print_hex(va_list args, char *str);
+int print_binary(va_list args, char *str, int len);
+int print_octal(va_list args, char *str, int len);
+int print_hex_lower(va_list args, char *str, int len);
+int print_hex(va_list args, char *str, int len);
 
-int print_s(va_list args, char *str);
-int print_rot(va_list args, char *str);
-int print_rev(va_list args, char *str);
+int print_s(va_list args, char *str, int len);
+int print_rot(va_list args, char *str, int len);
+int print_rev(va_list args, char *str, int len);
 
 int dec_binary(unsigned int x, char *str);
 int dec_octal(unsigned int x, char *str);
@@ -84,12 +84,12 @@ int dec_hex_lower(unsigned int x, char *str);
 int dec_hex_upper(unsigned int x, char *str);
 int dec_hex_format(unsigned int x, char *str);
 
-int print_address(va_list args, char *str);
+int print_address(va_list args, char *str, int len);
 int dec_hex_address(unsigned long int x, char *str);
 
 /* get modifiers functions */
 unsigned char get_flags(const char *format, int *index);
-int get_length(const char *format, int *index);
+int get_length(const char *format, unsigned char *index);
 int get_width(const char *format, int *index, va_list args);
 int get_precision(const char *format, int *index, va_list args);
 

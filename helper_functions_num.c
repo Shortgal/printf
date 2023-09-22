@@ -7,10 +7,10 @@
  * Return: no return.
  */
 
-int print_number(int n, char *str)
+int print_number(long int n, char *str)
 {
 	int length = 0;
-	unsigned int m, d, count;
+	unsigned long int m, d, count;
 
 	if (n < 0)
 	{
@@ -45,10 +45,10 @@ int print_number(int n, char *str)
  * Return: no return.
  */
 
-int print_unsigned_number(unsigned int n, char *str)
+int print_unsigned_number(unsigned long int n, char *str)
 {
 	int length = 0;
-	unsigned int m, d, count;
+	unsigned long int m, d, count;
 
 	m = n;
 	d = m;
