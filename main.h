@@ -23,7 +23,7 @@
 /******************* FUNCTIONS ******************/
 
 /**
- * format_list - contains the format specifier and its associated function
+ * struct format_list - contains ta format specifier and its function
  * @n: format specifier
  * @func: associated function
  */
@@ -35,9 +35,9 @@ typedef struct format_list
 } format_list;
 
 /**
- * flags_list - contains the format specifier and its associated function
- * @flag: format specifier
- * @value: associated function
+ * struct flags_list - contains the flag specifier and its value
+ * @flag: flag specifier
+ * @value: associated value
  */
 
 typedef struct flags_list
@@ -85,7 +85,7 @@ int dec_hex_upper(unsigned int x, char *str);
 int dec_hex_format(unsigned int x, char *str);
 
 int print_address(va_list args, char *str);
-int dec_hex_address(long unsigned int x, char *str);
+int dec_hex_address(unsigned long int x, char *str);
 
 /* get modifiers functions */
 unsigned char get_flags(const char *format, int *index);

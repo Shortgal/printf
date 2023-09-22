@@ -47,7 +47,7 @@ int print_number(int n, char *str)
 
 int print_unsigned_number(unsigned int n, char *str)
 {
-	int length;
+	int length = 0;
 	unsigned int m, d, count;
 
 	m = n;
